@@ -3,8 +3,7 @@
   "extends": [
     "config:recommended",
     ":separateMultipleMajorReleases",
-    ":prHourlyLimitNone",
-    ":branchConcurrentLimitNone",
+    ":disableRateLimiting",
     "schedule:automergeNonOfficeHours"
   ],
   "timezone": "Asia/Tokyo",
