@@ -1,6 +1,28 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
+    "config:recommended",
+    ":separateMultipleMajorReleases",
+    ":prHourlyLimitNone",
+    ":branchConcurrentLimitNone",
+    "schedule:automergeNonOfficeHours"
+  ],
+  "timezone": "Asia/Tokyo",
+  "dependencyDashboard": false,
+  "labels": ["renovate"],
+  "major": { "labels": ["renovate", "update_major"] },
+  "packageRules": [
+    {
+      "description": "automerges all but major updates",
+      "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
+      "automerge": true,
+      "automergeType": "branch"
+    },
+    {
+      "description": "automerges all updates including major ones for devDependencies",
+      "matchDepTypes": ["devDependencies"],
+      "automerge": true,
+      "automergeType": "branch"
+    }
   ]
 }
